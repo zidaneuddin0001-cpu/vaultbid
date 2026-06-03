@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
-import { createSupabaseServerClient, type Auction } from "@/lib/supabase";
+import { createSupabaseServerClient } from "@/lib/supabase-server";
+import { type Auction } from "@/lib/supabase";
 
 const CATEGORIES = ["All", "Pokémon", "Magic", "One Piece", "Sports"];
 

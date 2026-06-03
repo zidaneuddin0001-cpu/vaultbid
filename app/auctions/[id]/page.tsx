@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
-import { createSupabaseServerClient, type Bid } from "@/lib/supabase";
+import { createSupabaseServerClient } from "@/lib/supabase-server";
+import { type Bid } from "@/lib/supabase";
 import BidForm from "./BidForm";
 
 function getBuyerPremiumRate(price: number): number {
