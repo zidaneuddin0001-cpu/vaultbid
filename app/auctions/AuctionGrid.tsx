@@ -77,7 +77,7 @@ export default function AuctionGrid({ auctions }: { auctions: Auction[] }) {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search by card name, set, or category..."
-          className="w-full bg-zinc-900 border border-white/10 rounded-full pl-11 pr-10 py-3 text-sm outline-none focus:border-white/30 placeholder:text-zinc-600"
+          className="w-full bg-zinc-900 border border-white/10 rounded-full pl-12 pr-10 py-3 text-sm outline-none focus:border-white/30 placeholder:text-zinc-600"
         />
         {search && (
           <button
