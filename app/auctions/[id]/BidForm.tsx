@@ -6,9 +6,11 @@ import { placeBid } from "./actions";
 export default function BidForm({
   auctionId,
   currentBid,
+  onSuccess,
 }: {
   auctionId: string;
   currentBid: number;
+  onSuccess?: () => void;
 }) {
   const [amount, setAmount] = useState("");
   const [loading, setLoading] = useState(false);
@@ -32,6 +34,7 @@ export default function BidForm({
     } else {
       setSuccess(true);
       setAmount("");
+      onSuccess?.();
     }
   }
 
