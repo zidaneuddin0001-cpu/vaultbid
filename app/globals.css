@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ededed;
 }
 
 @theme inline {
@@ -12,15 +12,90 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Floating orbs */
+@keyframes orb-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(60px, -80px) scale(1.1); }
+  66%       { transform: translate(-40px, 40px) scale(0.95); }
+}
+@keyframes orb-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(-70px, 50px) scale(1.05); }
+  66%       { transform: translate(50px, -60px) scale(1.1); }
+}
+@keyframes orb-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(40px, 70px) scale(0.9); }
+}
+
+.orb-1 { animation: orb-1 18s ease-in-out infinite; }
+.orb-2 { animation: orb-2 22s ease-in-out infinite; }
+.orb-3 { animation: orb-3 26s ease-in-out infinite; }
+
+/* Scan line sweep */
+@keyframes scan {
+  0%   { top: -10%; }
+  100% { top: 110%; }
+}
+.scan-line {
+  animation: scan 6s linear infinite;
+}
+
+/* Gradient text shimmer */
+@keyframes shimmer {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.gradient-text {
+  background: linear-gradient(90deg, #fff 0%, #06b6d4 40%, #a78bfa 70%, #fff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+/* Pulse glow for urgent timers */
+@keyframes pulse-glow {
+  0%, 100% { text-shadow: 0 0 8px rgba(251, 146, 60, 0.6); }
+  50%       { text-shadow: 0 0 20px rgba(251, 146, 60, 1), 0 0 40px rgba(251, 146, 60, 0.4); }
+}
+.pulse-glow { animation: pulse-glow 1.5s ease-in-out infinite; }
+
+/* Card hover glow */
+.card-glow {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.card-glow:hover {
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.15), 0 0 60px rgba(6, 182, 212, 0.05);
+  border-color: rgba(6, 182, 212, 0.4) !important;
+}
+
+/* Grid overlay */
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(6, 182, 212, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Frosted glass */
+.glass {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Bid ticker */
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-track { animation: ticker 30s linear infinite; }

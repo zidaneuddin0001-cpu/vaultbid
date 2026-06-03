@@ -114,7 +114,7 @@ export default function AuctionGrid({ auctions }: { auctions: Auction[] }) {
             <a
               key={auction.id}
               href={`/auctions/${auction.id}`}
-              className="group flex flex-col bg-zinc-900 border border-white/10 rounded-2xl overflow-hidden hover:border-white/30 transition-colors"
+              className="card-glow group flex flex-col bg-zinc-900 border border-white/10 rounded-2xl overflow-hidden"
             >
               <div className="aspect-[3/4] bg-zinc-800 relative overflow-hidden">
                 {auction.image_url ? (
