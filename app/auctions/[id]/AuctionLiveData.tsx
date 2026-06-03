@@ -52,11 +52,14 @@ export default function AuctionLiveData({
   const [bidCount, setBidCount] = useState(initialBidCount);
   const [bids, setBids] = useState<Bid[]>(initialBids);
   const [timeLeft, setTimeLeft] = useState(formatTimeLeft(initialEndsAt));
+  const [ended, setEnded] = useState(new Date(initialEndsAt).getTime() <= Date.now());
 
   // Countdown timer
   useEffect(() => {
     const interval = setInterval(() => {
+      const remaining = new Date(initialEndsAt).getTime() - Date.now();
       setTimeLeft(formatTimeLeft(initialEndsAt));
+      if (remaining <= 0) setEnded(true);
     }, 30000);
     return () => clearInterval(interval);
   }, [initialEndsAt]);
@@ -106,8 +109,8 @@ export default function AuctionLiveData({
       {/* Timer */}
       <div className="bg-zinc-900 border border-white/10 rounded-2xl p-5 flex items-center justify-between">
         <div>
-          <p className="text-xs text-zinc-500 mb-1">Auction ends in</p>
-          <p className="text-2xl font-bold text-orange-400">{timeLeft}</p>
+          <p className="text-xs text-zinc-500 mb-1">{ended ? "Auction ended" : "Auction ends in"}</p>
+          <p className={`text-2xl font-bold ${ended ? "text-zinc-500" : "text-orange-400"}`}>{timeLeft}</p>
         </div>
         <div className="text-right">
           <p className="text-xs text-zinc-500 mb-1">Total bids</p>
@@ -117,25 +120,35 @@ export default function AuctionLiveData({
 
       {/* Current bid */}
       <div className="bg-zinc-900 border border-white/10 rounded-2xl p-5">
-        <p className="text-xs text-zinc-500 mb-1">Current bid</p>
+        <p className="text-xs text-zinc-500 mb-1">{ended ? "Final price" : "Current bid"}</p>
         <p className="text-4xl font-bold mb-4">${currentBid.toLocaleString()}</p>
 
-        <div className="text-xs text-zinc-500 space-y-1 mb-5 border-t border-white/10 pt-4">
-          <div className="flex justify-between">
-            <span>Hammer price</span>
-            <span className="text-white">${currentBid.toLocaleString()}</span>
+        {ended ? (
+          <div className="border-t border-white/10 pt-4">
+            <p className="text-sm text-zinc-500 text-center">This auction has ended.</p>
+            <a href="/auctions" className="mt-4 block text-center text-sm text-zinc-400 hover:text-white transition-colors">
+              Browse live auctions →
+            </a>
           </div>
-          <div className="flex justify-between">
-            <span>Buyer premium ({(premiumRate * 100).toFixed(0)}%)</span>
-            <span className="text-white">+${buyerPremium.toLocaleString()}</span>
-          </div>
-          <div className="flex justify-between font-semibold text-white pt-1 border-t border-white/10">
-            <span>Total if you win</span>
-            <span>${totalDue.toLocaleString()}</span>
-          </div>
-        </div>
-
-        <BidForm auctionId={auctionId} currentBid={currentBid} onSuccess={handleBidSuccess} />
+        ) : (
+          <>
+            <div className="text-xs text-zinc-500 space-y-1 mb-5 border-t border-white/10 pt-4">
+              <div className="flex justify-between">
+                <span>Hammer price</span>
+                <span className="text-white">${currentBid.toLocaleString()}</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Buyer premium ({(premiumRate * 100).toFixed(0)}%)</span>
+                <span className="text-white">+${buyerPremium.toLocaleString()}</span>
+              </div>
+              <div className="flex justify-between font-semibold text-white pt-1 border-t border-white/10">
+                <span>Total if you win</span>
+                <span>${totalDue.toLocaleString()}</span>
+              </div>
+            </div>
+            <BidForm auctionId={auctionId} currentBid={currentBid} onSuccess={handleBidSuccess} />
+          </>
+        )}
       </div>
 
       {/* Bid history */}
