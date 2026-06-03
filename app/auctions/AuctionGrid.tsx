@@ -6,6 +6,20 @@ import { type Auction } from "@/lib/supabase";
 
 const CATEGORIES = ["All", "Pokémon", "Magic", "One Piece", "Sports"];
 
+const CATEGORY_COLORS: Record<string, { border: string; glow: string; symbol: string; bg: string }> = {
+  "Pokémon":  { border: "#facc15", glow: "#facc1530", symbol: "⚡", bg: "#1a120080" },
+  "Magic":    { border: "#a855f7", glow: "#a855f730", symbol: "✦", bg: "#0d002080" },
+  "One Piece":{ border: "#ef4444", glow: "#ef444430", symbol: "☠", bg: "#1a000080" },
+  "Sports":   { border: "#3b82f6", glow: "#3b82f630", symbol: "★", bg: "#00081a80" },
+};
+
+function getRarityLabel(grade: string): string {
+  if (grade.includes("10"))  return "★★★ Ultra Rare";
+  if (grade.includes("9.5")) return "★★ Secret Rare";
+  if (grade.includes("9"))   return "★ Rare";
+  return "Common";
+}
+
 function formatTimeLeft(endsAt: string): string {
   const diff = new Date(endsAt).getTime() - Date.now();
   if (diff <= 0) return "Ended";
@@ -88,19 +102,23 @@ export default function AuctionGrid({ auctions }: { auctions: Auction[] }) {
 
       {/* Category filters */}
       <div className="flex gap-2 flex-wrap mb-8">
-        {CATEGORIES.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setCategory(cat)}
-            className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-colors ${
-              category === cat
-                ? "bg-white text-black border-white"
-                : "border-white/10 text-zinc-400 hover:border-white/30 hover:text-white"
-            }`}
-          >
-            {cat}
-          </button>
-        ))}
+        {CATEGORIES.map((cat) => {
+          const theme = CATEGORY_COLORS[cat];
+          const active = category === cat;
+          return (
+            <button
+              key={cat}
+              onClick={() => setCategory(cat)}
+              className="px-4 py-1.5 rounded-full text-sm font-bold border transition-all"
+              style={active
+                ? { background: theme?.border ?? "#fff", color: "#000", borderColor: theme?.border ?? "#fff" }
+                : { borderColor: (theme?.border ?? "#fff") + "30", color: theme?.border ?? "#a1a1aa", background: "transparent" }
+              }
+            >
+              {theme?.symbol ?? "◆"} {cat}
+            </button>
+          );
+        })}
       </div>
 
       {/* Grid */}
@@ -109,44 +127,65 @@ export default function AuctionGrid({ auctions }: { auctions: Auction[] }) {
           <p className="text-lg">No auctions found.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {filtered.map((auction) => (
-            <a
-              key={auction.id}
-              href={`/auctions/${auction.id}`}
-              className="card-glow group flex flex-col bg-zinc-900 border border-white/10 rounded-2xl overflow-hidden"
-            >
-              <div className="aspect-[3/4] bg-zinc-800 relative overflow-hidden">
-                {auction.image_url ? (
-                  <Image src={auction.image_url} alt={auction.name} fill className="object-cover" unoptimized />
-                ) : (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-zinc-600 text-xs">Card Image</span>
-                  </div>
-                )}
-              </div>
-              <div className="p-4 flex flex-col gap-3">
-                <div>
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs text-zinc-500">{auction.category} · {auction.year}</span>
-                    <span className="text-xs font-semibold text-zinc-300 bg-zinc-800 px-2 py-0.5 rounded-full">{auction.grade}</span>
-                  </div>
-                  <h3 className="font-semibold text-sm leading-tight">{auction.name}</h3>
-                  <p className="text-xs text-zinc-500 mt-0.5">{auction.set_name}</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {filtered.map((auction) => {
+            const theme = CATEGORY_COLORS[auction.category] ?? { border: "#ffffff30", glow: "#ffffff10", symbol: "◆", bg: "#11111180" };
+            const rarity = getRarityLabel(auction.grade);
+            return (
+              <a
+                key={auction.id}
+                href={`/auctions/${auction.id}`}
+                className="holo-card group flex flex-col rounded-2xl overflow-hidden transition-transform hover:-translate-y-1"
+                style={{ border: `1px solid ${theme.border}40`, background: theme.bg, boxShadow: `0 4px 24px ${theme.glow}` }}
+              >
+                {/* Card header bar */}
+                <div className="flex items-center justify-between px-3 py-2"
+                  style={{ borderBottom: `1px solid ${theme.border}30`, background: `${theme.border}10` }}>
+                  <span className="text-xs font-bold" style={{ color: theme.border }}>
+                    {theme.symbol} {auction.category}
+                  </span>
+                  <span className="text-xs text-zinc-400">{auction.year}</span>
                 </div>
-                <div className="border-t border-white/10 pt-3 flex items-end justify-between">
+
+                {/* Card image */}
+                <div className="aspect-[3/4] relative overflow-hidden" style={{ background: "#07050f" }}>
+                  {auction.image_url ? (
+                    <Image src={auction.image_url} alt={auction.name} fill className="object-cover" unoptimized />
+                  ) : (
+                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
+                      <span className="text-4xl opacity-20">{theme.symbol}</span>
+                      <span className="text-zinc-700 text-xs">No Image</span>
+                    </div>
+                  )}
+                  {/* Rarity label overlay */}
+                  <div className="absolute bottom-2 left-2">
+                    <span className="text-xs font-bold px-2 py-0.5 rounded-full"
+                      style={{ background: "rgba(0,0,0,0.7)", color: theme.border, border: `1px solid ${theme.border}50` }}>
+                      {rarity}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Card info */}
+                <div className="p-3 flex flex-col gap-2" style={{ borderTop: `1px solid ${theme.border}20` }}>
                   <div>
-                    <p className="text-xs text-zinc-500">Current bid</p>
-                    <p className="text-lg font-bold">${Number(auction.current_bid).toLocaleString()}</p>
+                    <h3 className="font-bold text-sm leading-tight text-white">{auction.name}</h3>
+                    <p className="text-xs mt-0.5" style={{ color: theme.border + "99" }}>{auction.set_name} · {auction.grade}</p>
                   </div>
-                  <div className="text-right">
-                    <p className="text-xs text-zinc-500">{auction.bid_count} bids</p>
-                    <p className="text-xs text-orange-400 font-medium">{formatTimeLeft(auction.ends_at)}</p>
+                  <div className="flex items-end justify-between pt-1" style={{ borderTop: `1px solid ${theme.border}15` }}>
+                    <div>
+                      <p className="text-xs text-zinc-500">Current bid</p>
+                      <p className="text-base font-bold text-white">${Number(auction.current_bid).toLocaleString()}</p>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-xs text-zinc-500">{auction.bid_count} bids</p>
+                      <p className="text-xs font-bold" style={{ color: "#fb923c" }}>{formatTimeLeft(auction.ends_at)}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </a>
-          ))}
+              </a>
+            );
+          })}
         </div>
       )}
     </>
