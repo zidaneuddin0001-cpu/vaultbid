@@ -68,8 +68,8 @@ export default function AuctionGrid({ auctions }: { auctions: Auction[] }) {
       </div>
 
       {/* Search */}
-      <div className="relative mb-6">
-        <svg className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="flex items-center gap-3 bg-zinc-900 border border-white/10 rounded-full px-4 py-3 mb-6 focus-within:border-white/30 transition-colors">
+        <svg className="text-zinc-500 flex-shrink-0" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
         <input
@@ -77,13 +77,10 @@ export default function AuctionGrid({ auctions }: { auctions: Auction[] }) {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search by card name, set, or category..."
-          className="w-full bg-zinc-900 border border-white/10 rounded-full pl-12 pr-10 py-3 text-sm outline-none focus:border-white/30 placeholder:text-zinc-600"
+          className="flex-1 bg-transparent text-sm outline-none placeholder:text-zinc-600"
         />
         {search && (
-          <button
-            onClick={() => setSearch("")}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-white transition-colors text-xl leading-none"
-          >
+          <button onClick={() => setSearch("")} className="text-zinc-500 hover:text-white transition-colors text-xl leading-none flex-shrink-0">
             ×
           </button>
         )}
