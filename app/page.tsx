@@ -129,17 +129,69 @@ export default function Home() {
       <section className="px-8 py-12 max-w-5xl mx-auto">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {[
-            { name: "Pokémon", color: "#facc15", bg: "#1a1200", symbol: "⚡" },
-            { name: "One Piece", color: "#ef4444", bg: "#1a0000", symbol: "☠" },
-            { name: "Magic", color: "#a855f7", bg: "#0d0020", symbol: "✦" },
-            { name: "Sports", color: "#3b82f6", bg: "#00081a", symbol: "★" },
+            {
+              name: "Pokémon", color: "#facc15", bg: "#1a1200",
+              emblem: (
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                  {/* Pokéball */}
+                  <circle cx="14" cy="14" r="12" stroke="#facc15" strokeWidth="1.5" fill="none" />
+                  <path d="M2 14h24" stroke="#facc15" strokeWidth="1.5" />
+                  <circle cx="14" cy="14" r="3.5" fill="#facc15" />
+                  <circle cx="14" cy="14" r="2" fill="#1a1200" />
+                </svg>
+              ),
+            },
+            {
+              name: "One Piece", color: "#ef4444", bg: "#1a0000",
+              emblem: (
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                  {/* Straw Hat Jolly Roger skull */}
+                  <circle cx="14" cy="13" r="6" fill="#ef4444" opacity="0.9" />
+                  <circle cx="11.5" cy="12" r="1.5" fill="#1a0000" />
+                  <circle cx="16.5" cy="12" r="1.5" fill="#1a0000" />
+                  <path d="M11 16 Q14 18.5 17 16" stroke="#1a0000" strokeWidth="1.2" strokeLinecap="round" fill="none" />
+                  {/* Straw hat brim */}
+                  <path d="M7 9 Q14 6 21 9" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" fill="none" />
+                  <path d="M9 9 Q14 7 19 9" stroke="#ef4444" strokeWidth="1" strokeLinecap="round" fill="none" opacity="0.5" />
+                  {/* Crossbones */}
+                  <line x1="6" y1="20" x2="10" y2="24" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round" />
+                  <line x1="10" y1="20" x2="6" y2="24" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round" />
+                  <line x1="18" y1="20" x2="22" y2="24" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round" />
+                  <line x1="22" y1="20" x2="18" y2="24" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+              ),
+            },
+            {
+              name: "Magic", color: "#a855f7", bg: "#0d0020",
+              emblem: (
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                  {/* Magic planeswalker spark / five-pointed pentagon */}
+                  <polygon points="14,3 17.5,11 26,11 19.5,16.5 22,25 14,20 6,25 8.5,16.5 2,11 10.5,11"
+                    stroke="#a855f7" strokeWidth="1.3" fill="none" strokeLinejoin="round" />
+                  <circle cx="14" cy="14" r="2.5" fill="#a855f7" opacity="0.7" />
+                </svg>
+              ),
+            },
+            {
+              name: "Sports", color: "#3b82f6", bg: "#00081a",
+              emblem: (
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                  {/* Trophy */}
+                  <path d="M9 4h10v9a5 5 0 01-10 0V4z" stroke="#3b82f6" strokeWidth="1.5" fill="none" strokeLinejoin="round" />
+                  <path d="M9 7H5a3 3 0 003 3" stroke="#3b82f6" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                  <path d="M19 7h4a3 3 0 01-3 3" stroke="#3b82f6" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                  <path d="M14 18v4" stroke="#3b82f6" strokeWidth="1.5" strokeLinecap="round" />
+                  <path d="M10 22h8" stroke="#3b82f6" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+              ),
+            },
           ].map((cat) => (
             <a key={cat.name} href={`/auctions?category=${encodeURIComponent(cat.name)}`}
-              className="holo-card relative flex flex-col items-center justify-center py-8 rounded-2xl border font-bold text-sm gap-2 transition-transform hover:-translate-y-1 cursor-pointer"
+              className="holo-card relative flex flex-col items-center justify-center py-8 rounded-2xl border font-bold text-sm gap-3 transition-transform hover:-translate-y-1 cursor-pointer"
               style={{ background: cat.bg, borderColor: cat.color + "40", color: cat.color }}>
               <div className="absolute inset-0 rounded-2xl opacity-0 hover:opacity-100 transition-opacity"
                 style={{ boxShadow: `0 0 30px ${cat.color}20` }} />
-              <span className="text-2xl">{cat.symbol}</span>
+              {cat.emblem}
               <span>{cat.name}</span>
             </a>
           ))}
