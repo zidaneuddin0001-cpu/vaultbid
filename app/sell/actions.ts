@@ -23,9 +23,12 @@ export async function createListing(formData: {
   const endsAt = new Date();
   endsAt.setDate(endsAt.getDate() + formData.durationDays);
 
+  const toTitleCase = (s: string) =>
+    s.replace(/\w\S*/g, (w) => w.charAt(0).toUpperCase() + w.slice(1));
+
   const { data, error } = await supabase.from("auctions").insert({
-    name: formData.name,
-    set_name: formData.setName,
+    name: toTitleCase(formData.name),
+    set_name: toTitleCase(formData.setName),
     year: formData.year,
     grade: formData.grade,
     grader: formData.grader,
