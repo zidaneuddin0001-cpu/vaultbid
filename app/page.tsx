@@ -106,8 +106,7 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/auctions"
-              className="relative px-8 py-3.5 rounded-full font-bold text-black overflow-hidden group"
-              style={{ background: "linear-gradient(90deg, #f59e0b, #fde68a, #f59e0b)", backgroundSize: "200%", animation: "gold-shimmer 3s linear infinite" }}>
+              className="gold-btn relative px-8 py-3.5 rounded-full font-bold text-black overflow-hidden">
               Browse Auctions
             </a>
             <a href="/sell"
