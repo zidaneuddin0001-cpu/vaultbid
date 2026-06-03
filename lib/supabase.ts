@@ -1,4 +1,4 @@
-import { createClient } from "@supabase/supabase-js";
+import { createBrowserClient } from "@supabase/ssr";
 
 export type Profile = {
   id: string;
@@ -38,5 +38,5 @@ export type Bid = {
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabasePublishableKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!;
 
-// Browser client — use in Client Components
-export const supabase = createClient(supabaseUrl, supabasePublishableKey);
+// Browser client — use in Client Components (stores session in cookies for server access)
+export const supabase = createBrowserClient(supabaseUrl, supabasePublishableKey);
