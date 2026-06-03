@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import { createSupabaseServerClient } from "@/lib/supabase-server";
 import { type Auction } from "@/lib/supabase";
 import SortSelect from "./SortSelect";
+import SearchBar from "./SearchBar";
 
 const CATEGORIES = ["All", "Pokémon", "Magic", "One Piece", "Sports"];
 
@@ -11,9 +12,9 @@ export const dynamic = "force-dynamic";
 export default async function AuctionsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ category?: string; sort?: string }>;
+  searchParams: Promise<{ category?: string; sort?: string; q?: string }>;
 }) {
-  const { category, sort } = await searchParams;
+  const { category, sort, q } = await searchParams;
   const supabase = await createSupabaseServerClient();
 
   let query = supabase
@@ -23,6 +24,10 @@ export default async function AuctionsPage({
 
   if (category && category !== "All") {
     query = query.eq("category", category);
+  }
+
+  if (q) {
+    query = query.or(`name.ilike.%${q}%,set_name.ilike.%${q}%,category.ilike.%${q}%`);
   }
 
   if (sort === "highest_bid") {
@@ -37,6 +42,7 @@ export default async function AuctionsPage({
 
   const { data: auctions } = await query;
   const activeCategory = category ?? "All";
+  const activeSearch = q ?? "";
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -51,6 +57,9 @@ export default async function AuctionsPage({
           </div>
           <SortSelect currentSort={sort ?? ""} />
         </div>
+
+        {/* Search */}
+        <SearchBar currentSearch={activeSearch} />
 
         {/* Category filters */}
         <div className="flex gap-2 flex-wrap mb-8">
