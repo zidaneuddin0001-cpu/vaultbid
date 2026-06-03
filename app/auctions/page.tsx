@@ -2,6 +2,7 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import { createSupabaseServerClient } from "@/lib/supabase-server";
 import { type Auction } from "@/lib/supabase";
+import SortSelect from "./SortSelect";
 
 const CATEGORIES = ["All", "Pokémon", "Magic", "One Piece", "Sports"];
 
@@ -48,23 +49,7 @@ export default async function AuctionsPage({
             <h1 className="text-3xl font-bold">Live Auctions</h1>
             <p className="text-zinc-500 text-sm mt-1">{auctions?.length ?? 0} active listings</p>
           </div>
-          <form>
-            {category && <input type="hidden" name="category" value={category} />}
-            <select
-              name="sort"
-              defaultValue={sort ?? ""}
-              className="bg-zinc-900 border border-white/10 text-white text-sm rounded-full px-4 py-2 outline-none"
-              onChange={(e) => {
-                const form = e.currentTarget.form!;
-                form.submit();
-              }}
-            >
-              <option value="">Ending soonest</option>
-              <option value="highest_bid">Highest bid</option>
-              <option value="most_bids">Most bids</option>
-              <option value="newest">Newest</option>
-            </select>
-          </form>
+          <SortSelect currentSort={sort ?? ""} />
         </div>
 
         {/* Category filters */}
