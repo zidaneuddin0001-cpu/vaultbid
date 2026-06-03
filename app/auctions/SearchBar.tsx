@@ -1,19 +1,19 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useTransition, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 
 export default function SearchBar({ currentSearch }: { currentSearch: string }) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [, startTransition] = useTransition();
   const [value, setValue] = useState(currentSearch);
+  const mounted = useRef(false);
 
   useEffect(() => {
-    setValue(currentSearch);
-  }, [currentSearch]);
-
-  useEffect(() => {
+    if (!mounted.current) {
+      mounted.current = true;
+      return;
+    }
     const timer = setTimeout(() => {
       const params = new URLSearchParams(searchParams.toString());
       if (value) {
@@ -21,10 +21,7 @@ export default function SearchBar({ currentSearch }: { currentSearch: string }) 
       } else {
         params.delete("q");
       }
-      params.delete(""); // clean up
-      startTransition(() => {
-        router.push(`/auctions?${params.toString()}`);
-      });
+      router.push(`/auctions?${params.toString()}`);
     }, 300);
     return () => clearTimeout(timer);
   }, [value]);
