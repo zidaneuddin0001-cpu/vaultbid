@@ -16,10 +16,10 @@ export default function Home() {
           Consign your graded slabs. We verify, list, and ship. You get paid in stablecoins within 48 hours of sale.
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
-          <a href="#" className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-zinc-200 transition-colors">
+          <a href="/auctions" className="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-zinc-200 transition-colors">
             Browse Auctions
           </a>
-          <a href="#" className="border border-white/20 text-white px-8 py-3 rounded-full font-semibold hover:bg-white/5 transition-colors">
+          <a href="/sell" className="border border-white/20 text-white px-8 py-3 rounded-full font-semibold hover:bg-white/5 transition-colors">
             Sell Your Cards
           </a>
         </div>

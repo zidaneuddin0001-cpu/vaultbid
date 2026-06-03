@@ -55,7 +55,7 @@ export default function Navbar() {
           username ? (
             <>
               <Link href="/sell" className="text-sm text-zinc-400 hover:text-white transition-colors">Sell</Link>
-              <span className="text-sm text-zinc-400">{username}</span>
+              <Link href="/dashboard" className="text-sm text-zinc-400 hover:text-white transition-colors">{username}</Link>
               <button
                 onClick={handleLogout}
                 className="text-sm bg-white text-black px-4 py-2 rounded-full font-medium hover:bg-zinc-200 transition-colors"
