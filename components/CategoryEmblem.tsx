@@ -15,28 +15,44 @@ export default function CategoryEmblem({ category, size = 28, color }: { categor
 
   if (category === "One Piece") {
     const c = color ?? "#ef4444";
+    const bg = "#07050f";
     return (
       <svg width={s} height={s} viewBox="0 0 28 28" fill="none">
+        {/* Crossbones — behind skull */}
+        <line x1="3" y1="9" x2="25" y2="26" stroke={c} strokeWidth="2" strokeLinecap="round" />
+        <circle cx="2.5" cy="8" r="1.8" fill={c} />
+        <circle cx="4.5" cy="10.5" r="1.2" fill={c} />
+        <circle cx="25.5" cy="27" r="1.8" fill={c} />
+        <circle cx="23.5" cy="24.5" r="1.2" fill={c} />
+        <line x1="25" y1="9" x2="3" y2="26" stroke={c} strokeWidth="2" strokeLinecap="round" />
+        <circle cx="25.5" cy="8" r="1.8" fill={c} />
+        <circle cx="23.5" cy="10.5" r="1.2" fill={c} />
+        <circle cx="2.5" cy="27" r="1.8" fill={c} />
+        <circle cx="4.5" cy="24.5" r="1.2" fill={c} />
         {/* Skull */}
-        <ellipse cx="14" cy="13" rx="6.5" ry="6" fill={c} opacity="0.9" />
-        {/* Eyes */}
-        <ellipse cx="11.5" cy="12" rx="1.6" ry="1.8" fill="#07050f" />
-        <ellipse cx="16.5" cy="12" rx="1.6" ry="1.8" fill="#07050f" />
+        <circle cx="14" cy="16" r="7" fill={c} />
+        {/* Eye sockets */}
+        <ellipse cx="10.8" cy="15.5" rx="2.2" ry="2.6" fill={bg} />
+        <ellipse cx="17.2" cy="15.5" rx="2.2" ry="2.6" fill={bg} />
         {/* Nose */}
-        <path d="M13.5 14.5 L14 15.5 L14.5 14.5" stroke="#07050f" strokeWidth="0.8" strokeLinecap="round" fill="none" />
-        {/* Smile */}
-        <path d="M11 16.5 Q14 19 17 16.5" stroke="#07050f" strokeWidth="1.2" strokeLinecap="round" fill="none" />
-        {/* Straw hat — brim */}
-        <path d="M5.5 10 Q14 13.5 22.5 10" stroke={c} strokeWidth="2.2" strokeLinecap="round" fill="none" />
-        {/* Straw hat — dome */}
-        <path d="M9 10 Q9.5 4 14 3.5 Q18.5 4 19 10" stroke={c} strokeWidth="1.5" strokeLinecap="round" fill="none" />
+        <circle cx="14" cy="18.5" r="0.9" fill={bg} />
+        {/* Teeth grid */}
+        <rect x="9.5" y="20" width="9" height="3.5" rx="0.5" fill={c} />
+        <line x1="11.5" y1="20" x2="11.5" y2="23.5" stroke={bg} strokeWidth="0.8" />
+        <line x1="13.5" y1="20" x2="13.5" y2="23.5" stroke={bg} strokeWidth="0.8" />
+        <line x1="15.5" y1="20" x2="15.5" y2="23.5" stroke={bg} strokeWidth="0.8" />
+        <line x1="9.5" y1="21.8" x2="18.5" y2="21.8" stroke={bg} strokeWidth="0.8" />
+        {/* Hat brim — wide flat bar */}
+        <rect x="1" y="10" width="26" height="2.5" rx="1.2" fill={c} />
+        {/* Hat dome */}
+        <ellipse cx="14" cy="8" rx="6.5" ry="5" fill={c} />
         {/* Hat band */}
-        <path d="M10 9.5 Q14 11.5 18 9.5" stroke={c} strokeWidth="1" strokeLinecap="round" opacity="0.6" fill="none" />
-        {/* Crossbones */}
-        <line x1="5.5" y1="20" x2="9.5" y2="25" stroke={c} strokeWidth="1.8" strokeLinecap="round" />
-        <line x1="9.5" y1="20" x2="5.5" y2="25" stroke={c} strokeWidth="1.8" strokeLinecap="round" />
-        <line x1="18.5" y1="20" x2="22.5" y2="25" stroke={c} strokeWidth="1.8" strokeLinecap="round" />
-        <line x1="22.5" y1="20" x2="18.5" y2="25" stroke={c} strokeWidth="1.8" strokeLinecap="round" />
+        <rect x="8" y="10" width="12" height="2.5" fill={c} opacity="0.5" />
+        <line x1="8" y1="10.5" x2="20" y2="10.5" stroke={bg} strokeWidth="1" opacity="0.6" />
+        {/* Straw marks */}
+        <line x1="11" y1="5" x2="11.5" y2="8" stroke={bg} strokeWidth="0.6" opacity="0.4" />
+        <line x1="14" y1="4" x2="14" y2="7" stroke={bg} strokeWidth="0.6" opacity="0.4" />
+        <line x1="17" y1="5" x2="16.5" y2="8" stroke={bg} strokeWidth="0.6" opacity="0.4" />
       </svg>
     );
   }
