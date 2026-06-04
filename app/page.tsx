@@ -56,7 +56,7 @@ export default function Home() {
         </div>
 
         {/* Floating decorative cards */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden hidden sm:block">
           {/* Left — purple Magic card */}
           <div className="vb-float-1 absolute left-[4%] top-[8%] w-36 h-48 rounded-2xl"
             style={{ background: "linear-gradient(135deg, #2d0060, #0d1a40)", border: "1px solid #a855f7", boxShadow: "0 0 30px #a855f740, inset 0 0 20px #a855f710" }}>
@@ -78,7 +78,7 @@ export default function Home() {
             </div>
           </div>
           {/* Bottom left — red One Piece card */}
-          <div className="vb-float-3 absolute left-[14%] bottom-[5%] w-28 h-40 rounded-2xl"
+          <div className="vb-float-3 absolute left-[14%] top-[55%] w-28 h-40 rounded-2xl"
             style={{ background: "linear-gradient(135deg, #3a0000, #1a0010)", border: "1px solid #ef4444", boxShadow: "0 0 30px #ef444440, inset 0 0 20px #ef444410" }}>
             <div className="h-full flex flex-col p-3 gap-2">
               <div className="text-xs font-bold" style={{ color: "#ef4444" }}>☠ One Piece</div>

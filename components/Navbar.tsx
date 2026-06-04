@@ -45,7 +45,7 @@ export default function Navbar() {
         <Link href="/" className="text-xl font-bold tracking-tight">VaultBid</Link>
 
         {/* Desktop nav */}
-        <div className="hidden sm:flex items-center gap-4">
+        <div className="hidden sm:flex items-center" style={{ gap: "1rem" }}>
           <Link href="/auctions" className="text-sm text-zinc-400 hover:text-white transition-colors">Browse</Link>
           <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">How it works</Link>
           {!loading && (
