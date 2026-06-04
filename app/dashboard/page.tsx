@@ -43,14 +43,14 @@ export default async function DashboardPage() {
     <div className="min-h-screen bg-black text-white">
       <Navbar />
 
-      <div className="max-w-5xl mx-auto px-8 py-12">
+      <div className="max-w-5xl mx-auto px-4 sm:px-8 py-8 sm:py-12">
         <div className="mb-10">
           <h1 className="text-3xl font-bold">Dashboard</h1>
           <p className="text-zinc-500 text-sm mt-1">Welcome back, {profile?.username}</p>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-3 gap-4 mb-12">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-12">
           {[
             { label: "Active listings", value: listings?.filter(l => l.status === "active").length ?? 0 },
             { label: "Auctions bidding on", value: activeBids.length },

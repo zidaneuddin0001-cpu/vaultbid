@@ -75,12 +75,12 @@ export default function SellPage() {
         <Link href="/auctions" className="text-sm text-zinc-400 hover:text-white transition-colors">Browse</Link>
       </nav>
 
-      <div className="max-w-5xl mx-auto w-full px-8 py-12">
+      <div className="max-w-5xl mx-auto w-full px-4 sm:px-8 py-8 sm:py-12">
         <h1 className="text-3xl font-bold mb-2">List a card</h1>
         <p className="text-zinc-500 text-sm mb-10">Fill in the details — we'll auto-fetch the card image.</p>
 
         <form onSubmit={handleSubmit}>
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Left — form fields */}
             <div className="flex flex-col gap-5">
               {/* Category */}

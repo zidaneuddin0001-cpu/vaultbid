@@ -25,7 +25,7 @@ export default async function AuctionPage({
     <div className="min-h-screen bg-black text-white">
       <Navbar />
 
-      <div className="max-w-7xl mx-auto px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12">
         {/* Breadcrumb */}
         <div className="text-xs text-zinc-500 mb-8">
           <a href="/auctions" className="hover:text-white transition-colors">Live Auctions</a>

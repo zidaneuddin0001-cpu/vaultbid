@@ -15,7 +15,7 @@ export default async function AuctionsPage() {
   return (
     <div className="min-h-screen bg-black text-white">
       <Navbar />
-      <div className="max-w-7xl mx-auto px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-12">
         <AuctionGrid auctions={auctions ?? []} />
       </div>
     </div>
