@@ -45,14 +45,14 @@ export default function Navbar() {
         <Link href="/" className="text-xl font-bold tracking-tight">VaultBid</Link>
 
         {/* Desktop nav */}
-        <div className="hidden sm:flex items-center" style={{ gap: "1rem" }}>
-          <Link href="/auctions" className="text-sm text-zinc-400 hover:text-white transition-colors">Browse</Link>
-          <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors">How it works</Link>
+        <div className="hidden sm:flex items-center">
+          <Link href="/auctions" className="text-sm text-zinc-400 hover:text-white transition-colors" style={{ marginRight: "1.5rem" }}>Browse</Link>
+          <Link href="#" className="text-sm text-zinc-400 hover:text-white transition-colors" style={{ marginRight: "1.5rem" }}>How it works</Link>
           {!loading && (
             username ? (
               <>
-                <Link href="/sell" className="text-sm text-zinc-400 hover:text-white transition-colors">Sell</Link>
-                <Link href="/dashboard" className="text-sm text-zinc-400 hover:text-white transition-colors">{username}</Link>
+                <Link href="/sell" className="text-sm text-zinc-400 hover:text-white transition-colors" style={{ marginRight: "1.5rem" }}>Sell</Link>
+                <Link href="/dashboard" className="text-sm text-zinc-400 hover:text-white transition-colors" style={{ marginRight: "1.5rem" }}>{username}</Link>
                 <button onClick={handleLogout}
                   className="text-sm bg-white text-black px-4 py-2 rounded-full font-medium hover:bg-zinc-200 transition-colors">
                   Log out
@@ -60,8 +60,8 @@ export default function Navbar() {
               </>
             ) : (
               <>
-                <Link href="/sell" className="text-sm text-zinc-400 hover:text-white transition-colors">Sell</Link>
-                <Link href="/login" className="text-sm text-zinc-400 hover:text-white transition-colors">Log in</Link>
+                <Link href="/sell" className="text-sm text-zinc-400 hover:text-white transition-colors" style={{ marginRight: "1.5rem" }}>Sell</Link>
+                <Link href="/login" className="text-sm text-zinc-400 hover:text-white transition-colors" style={{ marginRight: "1.5rem" }}>Log in</Link>
                 <Link href="/signup" className="text-sm bg-white text-black px-4 py-2 rounded-full font-medium hover:bg-zinc-200 transition-colors">Sign up</Link>
               </>
             )

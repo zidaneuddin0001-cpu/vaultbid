@@ -55,38 +55,6 @@ export default function Home() {
             style={{ background: "radial-gradient(ellipse, #ef4444 0%, transparent 70%)", filter: "blur(60px)" }} />
         </div>
 
-        {/* Floating decorative cards */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden hidden sm:block">
-          {/* Left — purple Magic card */}
-          <div className="vb-float-1 absolute left-[4%] top-[8%] w-36 h-48 rounded-2xl"
-            style={{ background: "linear-gradient(135deg, #2d0060, #0d1a40)", border: "1px solid #a855f7", boxShadow: "0 0 30px #a855f740, inset 0 0 20px #a855f710" }}>
-            <div className="h-full flex flex-col p-3 gap-2">
-              <div className="text-xs font-bold" style={{ color: "#a855f7" }}>✦ Magic</div>
-              <div className="flex-1 rounded-lg" style={{ background: "linear-gradient(135deg, #3b0080, #1a1a60)" }} />
-              <div className="h-2 w-3/4 rounded-full" style={{ background: "#a855f750" }} />
-              <div className="h-1.5 w-1/2 rounded-full" style={{ background: "#a855f730" }} />
-            </div>
-          </div>
-          {/* Right — gold Pokémon card */}
-          <div className="vb-float-2 absolute right-[4%] top-[5%] w-32 h-44 rounded-2xl"
-            style={{ background: "linear-gradient(135deg, #3a2000, #1a1000)", border: "1px solid #facc15", boxShadow: "0 0 30px #facc1540, inset 0 0 20px #facc1510" }}>
-            <div className="h-full flex flex-col p-3 gap-2">
-              <div className="text-xs font-bold" style={{ color: "#facc15" }}>⚡ Pokémon</div>
-              <div className="flex-1 rounded-lg" style={{ background: "linear-gradient(135deg, #6a3800, #2a1800)" }} />
-              <div className="h-2 w-3/4 rounded-full" style={{ background: "#facc1550" }} />
-              <div className="h-1.5 w-1/2 rounded-full" style={{ background: "#facc1530" }} />
-            </div>
-          </div>
-          {/* Bottom left — red One Piece card */}
-          <div className="vb-float-3 absolute left-[14%] top-[55%] w-28 h-40 rounded-2xl"
-            style={{ background: "linear-gradient(135deg, #3a0000, #1a0010)", border: "1px solid #ef4444", boxShadow: "0 0 30px #ef444440, inset 0 0 20px #ef444410" }}>
-            <div className="h-full flex flex-col p-3 gap-2">
-              <div className="text-xs font-bold" style={{ color: "#ef4444" }}>☠ One Piece</div>
-              <div className="flex-1 rounded-lg" style={{ background: "linear-gradient(135deg, #5a0000, #2a0010)" }} />
-              <div className="h-2 w-3/4 rounded-full" style={{ background: "#ef444450" }} />
-            </div>
-          </div>
-        </div>
 
         {/* Hero content */}
         <div className="relative z-10 max-w-4xl mx-auto">
