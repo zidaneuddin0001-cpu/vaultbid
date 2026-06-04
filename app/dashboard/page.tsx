@@ -29,7 +29,8 @@ export default async function DashboardPage() {
   ]);
 
   // Deduplicate bids — keep only the highest bid per auction
-  const topBidsByAuction = new Map<string, typeof bids[0]>();
+  type BidRow = NonNullable<typeof bids>[number];
+  const topBidsByAuction = new Map<string, BidRow>();
   for (const bid of bids ?? []) {
     const auctionId = bid.auctions?.id;
     if (!auctionId) continue;
