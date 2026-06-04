@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState, useMemo } from "react";
 import { type Auction } from "@/lib/supabase";
+import CategoryEmblem from "@/components/CategoryEmblem";
 
 const CATEGORIES = ["All", "Pokémon", "Magic", "One Piece", "Sports"];
 
@@ -13,12 +14,6 @@ const CATEGORY_COLORS: Record<string, { border: string; glow: string; symbol: st
   "Sports":   { border: "#3b82f6", glow: "#3b82f630", symbol: "★", bg: "#00081a80" },
 };
 
-function getRarityLabel(grade: string): string {
-  if (grade.includes("10"))  return "★★★ Ultra Rare";
-  if (grade.includes("9.5")) return "★★ Secret Rare";
-  if (grade.includes("9"))   return "★ Rare";
-  return "Common";
-}
 
 function formatTimeLeft(endsAt: string): string {
   const diff = new Date(endsAt).getTime() - Date.now();
@@ -109,13 +104,16 @@ export default function AuctionGrid({ auctions }: { auctions: Auction[] }) {
             <button
               key={cat}
               onClick={() => setCategory(cat)}
-              className="px-4 py-1.5 rounded-full text-sm font-bold border transition-all"
+              className="flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-bold border transition-all"
               style={active
                 ? { background: theme?.border ?? "#fff", color: "#000", borderColor: theme?.border ?? "#fff" }
                 : { borderColor: (theme?.border ?? "#fff") + "30", color: theme?.border ?? "#a1a1aa", background: "transparent" }
               }
             >
-              {theme?.symbol ?? "◆"} {cat}
+              {cat !== "All" && (
+                <CategoryEmblem category={cat} color={active ? "#000" : theme?.border} size={14} />
+              )}
+              {cat}
             </button>
           );
         })}
@@ -130,7 +128,6 @@ export default function AuctionGrid({ auctions }: { auctions: Auction[] }) {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {filtered.map((auction) => {
             const theme = CATEGORY_COLORS[auction.category] ?? { border: "#ffffff30", glow: "#ffffff10", symbol: "◆", bg: "#11111180" };
-            const rarity = getRarityLabel(auction.grade);
             return (
               <a
                 key={auction.id}
@@ -141,8 +138,9 @@ export default function AuctionGrid({ auctions }: { auctions: Auction[] }) {
                 {/* Card header bar */}
                 <div className="flex items-center justify-between px-3 py-2"
                   style={{ borderBottom: `1px solid ${theme.border}30`, background: `${theme.border}10` }}>
-                  <span className="text-xs font-bold" style={{ color: theme.border }}>
-                    {theme.symbol} {auction.category}
+                  <span className="flex items-center gap-1.5 text-xs font-bold" style={{ color: theme.border }}>
+                    <CategoryEmblem category={auction.category} color={theme.border} size={14} />
+                    {auction.category}
                   </span>
                   <span className="text-xs text-zinc-400">{auction.year}</span>
                 </div>
@@ -153,17 +151,10 @@ export default function AuctionGrid({ auctions }: { auctions: Auction[] }) {
                     <Image src={auction.image_url} alt={auction.name} fill className="object-cover" unoptimized />
                   ) : (
                     <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-                      <span className="text-4xl opacity-20">{theme.symbol}</span>
+                      <CategoryEmblem category={auction.category} color={theme.border} size={32} />
                       <span className="text-zinc-700 text-xs">No Image</span>
                     </div>
                   )}
-                  {/* Rarity label overlay */}
-                  <div className="absolute bottom-2 left-2">
-                    <span className="text-xs font-bold px-2 py-0.5 rounded-full"
-                      style={{ background: "rgba(0,0,0,0.7)", color: theme.border, border: `1px solid ${theme.border}50` }}>
-                      {rarity}
-                    </span>
-                  </div>
                 </div>
 
                 {/* Card info */}
