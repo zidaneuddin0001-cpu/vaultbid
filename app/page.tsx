@@ -43,7 +43,32 @@ export default function Home() {
       </div>
 
       {/* Hero */}
-      <section className="relative flex flex-col items-center text-center px-8 pt-20 pb-16 overflow-hidden">
+      <section className="relative flex flex-col items-center text-center px-8 pt-20 pb-16 overflow-hidden" style={{ minHeight: "520px" }}>
+
+        {/* Floating blank card silhouettes */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          {/* Left — purple */}
+          <div className="vb-float-1 absolute rounded-2xl"
+            style={{ top: "40px", left: "4%", width: "128px", height: "176px", background: "linear-gradient(135deg, #1a0030, #0d1a40)", border: "1px solid rgba(168,85,247,0.4)", boxShadow: "0 0 24px rgba(168,85,247,0.15)" }}>
+            <div style={{ height: "60%", margin: "10px 10px 8px 10px", borderRadius: "8px", background: "rgba(168,85,247,0.12)" }} />
+            <div style={{ height: "6px", margin: "0 10px 6px", borderRadius: "4px", background: "rgba(168,85,247,0.2)", width: "70%" }} />
+            <div style={{ height: "5px", margin: "0 10px", borderRadius: "4px", background: "rgba(168,85,247,0.12)", width: "50%" }} />
+          </div>
+          {/* Right — gold */}
+          <div className="vb-float-2 absolute rounded-2xl"
+            style={{ top: "20px", right: "4%", width: "112px", height: "160px", background: "linear-gradient(135deg, #1a1000, #0a1200)", border: "1px solid rgba(250,204,21,0.4)", boxShadow: "0 0 24px rgba(250,204,21,0.15)" }}>
+            <div style={{ height: "60%", margin: "10px 10px 8px 10px", borderRadius: "8px", background: "rgba(250,204,21,0.1)" }} />
+            <div style={{ height: "6px", margin: "0 10px 6px", borderRadius: "4px", background: "rgba(250,204,21,0.2)", width: "70%" }} />
+            <div style={{ height: "5px", margin: "0 10px", borderRadius: "4px", background: "rgba(250,204,21,0.12)", width: "50%" }} />
+          </div>
+          {/* Far left — red */}
+          <div className="vb-float-3 absolute rounded-2xl"
+            style={{ top: "180px", left: "12%", width: "96px", height: "136px", background: "linear-gradient(135deg, #1a0000, #100008)", border: "1px solid rgba(239,68,68,0.3)", boxShadow: "0 0 20px rgba(239,68,68,0.1)" }}>
+            <div style={{ height: "60%", margin: "8px 8px 6px 8px", borderRadius: "6px", background: "rgba(239,68,68,0.1)" }} />
+            <div style={{ height: "5px", margin: "0 8px 5px", borderRadius: "4px", background: "rgba(239,68,68,0.18)", width: "70%" }} />
+            <div style={{ height: "4px", margin: "0 8px", borderRadius: "4px", background: "rgba(239,68,68,0.1)", width: "50%" }} />
+          </div>
+        </div>
 
         {/* Background glow pools */}
         <div className="absolute inset-0 pointer-events-none">
