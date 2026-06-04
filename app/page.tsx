@@ -25,7 +25,7 @@ export default function Home() {
 
       {/* Live ticker */}
       <div className="border-b border-white/5 overflow-hidden py-2" style={{ background: "rgba(255,255,255,0.02)" }}>
-        <div className="flex ticker-track whitespace-nowrap gap-0">
+        <div className="flex vb-ticker whitespace-nowrap gap-0">
           {[...Array(2)].map((_, i) => (
             <div key={i} className="flex gap-8 pr-8">
               {TICKER_ITEMS.map((item) => (
@@ -58,7 +58,7 @@ export default function Home() {
         {/* Floating decorative cards */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {/* Left card */}
-          <div className="float-1 absolute left-[5%] top-[10%] w-32 h-44 rounded-xl border opacity-20"
+          <div className="vb-float-1 absolute left-[5%] top-[10%] w-32 h-44 rounded-xl border opacity-20"
             style={{ background: "linear-gradient(135deg, #1a0030, #0d1a40)", borderColor: "#a855f7", boxShadow: "0 0 20px #a855f720" }}>
             <div className="h-full flex flex-col p-2 gap-1">
               <div className="h-24 rounded-lg bg-purple-900/40" />
@@ -67,7 +67,7 @@ export default function Home() {
             </div>
           </div>
           {/* Right card */}
-          <div className="float-2 absolute right-[5%] top-[5%] w-28 h-40 rounded-xl border opacity-20"
+          <div className="vb-float-2 absolute right-[5%] top-[5%] w-28 h-40 rounded-xl border opacity-20"
             style={{ background: "linear-gradient(135deg, #1a1000, #0a1a10)", borderColor: "#facc15", boxShadow: "0 0 20px #facc1520" }}>
             <div className="h-full flex flex-col p-2 gap-1">
               <div className="h-20 rounded-lg bg-yellow-900/40" />
@@ -76,7 +76,7 @@ export default function Home() {
             </div>
           </div>
           {/* Far left card */}
-          <div className="float-3 absolute left-[15%] bottom-[10%] w-24 h-36 rounded-xl border opacity-10"
+          <div className="vb-float-3 absolute left-[15%] bottom-[10%] w-24 h-36 rounded-xl border opacity-10"
             style={{ background: "linear-gradient(135deg, #0a0020, #001a0a)", borderColor: "#ef4444", boxShadow: "0 0 20px #ef444420" }}>
             <div className="h-full flex flex-col p-2 gap-1">
               <div className="h-16 rounded-lg bg-red-900/40" />
@@ -97,7 +97,7 @@ export default function Home() {
 
           <h1 className="text-5xl sm:text-7xl font-bold tracking-tight leading-tight mb-4">
             Where Legends<br />
-            <span className="gold-text">Get Auctioned.</span>
+            <span className="vb-gold-text">Get Auctioned.</span>
           </h1>
 
           <p className="text-zinc-400 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
@@ -106,7 +106,7 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="/auctions"
-              className="gold-btn relative px-8 py-3.5 rounded-full font-bold text-black overflow-hidden">
+              className="vb-gold-btn relative px-8 py-3.5 rounded-full font-bold text-black overflow-hidden">
               Browse Auctions
             </a>
             <a href="/sell"
@@ -119,7 +119,7 @@ export default function Home() {
 
         {/* Scan line */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="scan-line absolute left-0 right-0 h-px"
+          <div className="vb-scan absolute left-0 right-0 h-px"
             style={{ background: "linear-gradient(90deg, transparent, rgba(245,158,11,0.15), transparent)" }} />
         </div>
       </section>

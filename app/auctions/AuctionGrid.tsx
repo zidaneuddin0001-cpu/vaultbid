@@ -135,7 +135,7 @@ export default function AuctionGrid({ auctions }: { auctions: Auction[] }) {
               <a
                 key={auction.id}
                 href={`/auctions/${auction.id}`}
-                className="holo-card group flex flex-col rounded-2xl overflow-hidden transition-transform hover:-translate-y-1"
+                className="vb-holo group flex flex-col rounded-2xl overflow-hidden transition-transform hover:-translate-y-1"
                 style={{ border: `1px solid ${theme.border}40`, background: theme.bg, boxShadow: `0 4px 24px ${theme.glow}` }}
               >
                 {/* Card header bar */}
