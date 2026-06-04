@@ -15,44 +15,22 @@ export default function CategoryEmblem({ category, size = 28, color }: { categor
 
   if (category === "One Piece") {
     const c = color ?? "#ef4444";
-    const bg = "#07050f";
     return (
       <svg width={s} height={s} viewBox="0 0 28 28" fill="none">
-        {/* Crossbones — behind skull */}
-        <line x1="3" y1="9" x2="25" y2="26" stroke={c} strokeWidth="2" strokeLinecap="round" />
-        <circle cx="2.5" cy="8" r="1.8" fill={c} />
-        <circle cx="4.5" cy="10.5" r="1.2" fill={c} />
-        <circle cx="25.5" cy="27" r="1.8" fill={c} />
-        <circle cx="23.5" cy="24.5" r="1.2" fill={c} />
-        <line x1="25" y1="9" x2="3" y2="26" stroke={c} strokeWidth="2" strokeLinecap="round" />
-        <circle cx="25.5" cy="8" r="1.8" fill={c} />
-        <circle cx="23.5" cy="10.5" r="1.2" fill={c} />
-        <circle cx="2.5" cy="27" r="1.8" fill={c} />
-        <circle cx="4.5" cy="24.5" r="1.2" fill={c} />
-        {/* Skull */}
-        <circle cx="14" cy="16" r="7" fill={c} />
-        {/* Eye sockets */}
-        <ellipse cx="10.8" cy="15.5" rx="2.2" ry="2.6" fill={bg} />
-        <ellipse cx="17.2" cy="15.5" rx="2.2" ry="2.6" fill={bg} />
-        {/* Nose */}
-        <circle cx="14" cy="18.5" r="0.9" fill={bg} />
-        {/* Teeth grid */}
-        <rect x="9.5" y="20" width="9" height="3.5" rx="0.5" fill={c} />
-        <line x1="11.5" y1="20" x2="11.5" y2="23.5" stroke={bg} strokeWidth="0.8" />
-        <line x1="13.5" y1="20" x2="13.5" y2="23.5" stroke={bg} strokeWidth="0.8" />
-        <line x1="15.5" y1="20" x2="15.5" y2="23.5" stroke={bg} strokeWidth="0.8" />
-        <line x1="9.5" y1="21.8" x2="18.5" y2="21.8" stroke={bg} strokeWidth="0.8" />
-        {/* Hat brim — wide flat bar */}
-        <rect x="1" y="10" width="26" height="2.5" rx="1.2" fill={c} />
-        {/* Hat dome */}
-        <ellipse cx="14" cy="8" rx="6.5" ry="5" fill={c} />
-        {/* Hat band */}
-        <rect x="8" y="10" width="12" height="2.5" fill={c} opacity="0.5" />
-        <line x1="8" y1="10.5" x2="20" y2="10.5" stroke={bg} strokeWidth="1" opacity="0.6" />
-        {/* Straw marks */}
-        <line x1="11" y1="5" x2="11.5" y2="8" stroke={bg} strokeWidth="0.6" opacity="0.4" />
-        <line x1="14" y1="4" x2="14" y2="7" stroke={bg} strokeWidth="0.6" opacity="0.4" />
-        <line x1="17" y1="5" x2="16.5" y2="8" stroke={bg} strokeWidth="0.6" opacity="0.4" />
+        {/* Stem — curly like a real devil fruit */}
+        <path d="M14 7 Q15 4 18 3.5 Q21 3.5 20 6" stroke={c} strokeWidth="1.4" strokeLinecap="round" fill="none" />
+        {/* Leaf */}
+        <path d="M14 7 Q11 3.5 9 5 Q10 7.5 14 7Z" fill={c} opacity="0.7" />
+        {/* Fruit body — slightly pear-shaped like devil fruits */}
+        <ellipse cx="14" cy="17" rx="9.5" ry="10" fill={c} />
+        <ellipse cx="14" cy="13" rx="7" ry="6" fill={c} />
+        {/* Devil fruit swirl lines — the signature wavy horizontal bands */}
+        <path d="M5 13 Q9 10.5 14 13 Q19 15.5 23 13" stroke="rgba(0,0,0,0.3)" strokeWidth="1.3" fill="none" strokeLinecap="round" />
+        <path d="M5 17 Q9 14.5 14 17 Q19 19.5 23 17" stroke="rgba(0,0,0,0.3)" strokeWidth="1.3" fill="none" strokeLinecap="round" />
+        <path d="M6 21 Q10 18.5 14 21 Q18 23.5 22 21" stroke="rgba(0,0,0,0.25)" strokeWidth="1.3" fill="none" strokeLinecap="round" />
+        <path d="M7 9.5 Q10.5 7.5 14 9.5 Q17.5 11.5 21 9.5" stroke="rgba(0,0,0,0.2)" strokeWidth="1.1" fill="none" strokeLinecap="round" />
+        {/* Highlight */}
+        <ellipse cx="10.5" cy="12" rx="2.5" ry="1.5" fill="white" opacity="0.12" />
       </svg>
     );
   }
