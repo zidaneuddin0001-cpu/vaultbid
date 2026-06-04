@@ -6,7 +6,7 @@ import { useState, useTransition } from "react";
 import { lookupCardImage } from "@/lib/card-images";
 import { createListing } from "./actions";
 
-const CATEGORIES = ["Pokémon", "Magic", "One Piece", "Sports"];
+const CATEGORIES = ["Pokémon", "Magic", "One Piece", "Dragon Ball", "Sports"];
 const GRADERS = ["PSA", "BGS", "CGC", "SGC"];
 const GRADES = ["10", "9.5", "9", "8.5", "8", "7.5", "7"];
 const DURATIONS = [7, 10, 14];

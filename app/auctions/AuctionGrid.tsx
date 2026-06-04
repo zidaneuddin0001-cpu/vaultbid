@@ -5,13 +5,14 @@ import { useState, useMemo } from "react";
 import { type Auction } from "@/lib/supabase";
 import CategoryEmblem from "@/components/CategoryEmblem";
 
-const CATEGORIES = ["All", "Pokémon", "Magic", "One Piece", "Sports"];
+const CATEGORIES = ["All", "Pokémon", "Magic", "One Piece", "Dragon Ball", "Sports"];
 
 const CATEGORY_COLORS: Record<string, { border: string; glow: string; symbol: string; bg: string }> = {
-  "Pokémon":  { border: "#facc15", glow: "#facc1530", symbol: "⚡", bg: "#1a120080" },
-  "Magic":    { border: "#a855f7", glow: "#a855f730", symbol: "✦", bg: "#0d002080" },
-  "One Piece":{ border: "#ef4444", glow: "#ef444430", symbol: "☠", bg: "#1a000080" },
-  "Sports":   { border: "#3b82f6", glow: "#3b82f630", symbol: "★", bg: "#00081a80" },
+  "Pokémon":     { border: "#facc15", glow: "#facc1530", symbol: "⚡", bg: "#1a120080" },
+  "Magic":       { border: "#a855f7", glow: "#a855f730", symbol: "✦", bg: "#0d002080" },
+  "One Piece":   { border: "#ef4444", glow: "#ef444430", symbol: "☠", bg: "#1a000080" },
+  "Dragon Ball": { border: "#f97316", glow: "#f9731630", symbol: "★", bg: "#1a080080" },
+  "Sports":      { border: "#3b82f6", glow: "#3b82f630", symbol: "★", bg: "#00081a80" },
 };
 
 

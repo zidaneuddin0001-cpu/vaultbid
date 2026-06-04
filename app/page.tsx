@@ -10,13 +10,15 @@ const TICKER_ITEMS = [
   { name: "Nami PSA 10", bid: "$620", change: "+$30", category: "One Piece" },
   { name: "Mew PSA 9", bid: "$340", change: "+$20", category: "Pokémon" },
   { name: "Mike Trout BGS 9.5", bid: "$1,750", change: "+$80", category: "Sports" },
+  { name: "Son Goku SCR PSA 10", bid: "$2,800", change: "+$150", category: "Dragon Ball" },
 ];
 
 const CATEGORY_COLORS: Record<string, string> = {
-  "Pokémon": "#facc15",
-  "Magic": "#a855f7",
-  "One Piece": "#ef4444",
-  "Sports": "#3b82f6",
+  "Pokémon":     "#facc15",
+  "Magic":       "#a855f7",
+  "One Piece":   "#ef4444",
+  "Dragon Ball": "#f97316",
+  "Sports":      "#3b82f6",
 };
 
 export default function Home() {
@@ -125,10 +127,11 @@ export default function Home() {
       <section className="px-8 py-12 max-w-5xl mx-auto">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {[
-            { name: "Pokémon",   color: "#facc15", bg: "#1a1200" },
-            { name: "One Piece", color: "#ef4444", bg: "#1a0000" },
-            { name: "Magic",     color: "#a855f7", bg: "#0d0020" },
-            { name: "Sports",    color: "#3b82f6", bg: "#00081a" },
+            { name: "Pokémon",     color: "#facc15", bg: "#1a1200" },
+            { name: "One Piece",   color: "#ef4444", bg: "#1a0000" },
+            { name: "Magic",       color: "#a855f7", bg: "#0d0020" },
+            { name: "Dragon Ball", color: "#f97316", bg: "#1a0800" },
+            { name: "Sports",      color: "#3b82f6", bg: "#00081a" },
           ].map((cat) => (
             <a key={cat.name} href={`/auctions?category=${encodeURIComponent(cat.name)}`}
               className="vb-holo relative flex flex-col items-center justify-center py-8 rounded-2xl border font-bold text-sm gap-3 transition-transform hover:-translate-y-1 cursor-pointer"

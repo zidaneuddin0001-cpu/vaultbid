@@ -53,6 +53,31 @@ export default function CategoryEmblem({ category, size = 28, color }: { categor
     );
   }
 
+  if (category === "Dragon Ball") {
+    const c = color ?? "#f97316";
+    const star = "rgba(160,30,0,0.75)";
+    return (
+      <svg width={s} height={s} viewBox="0 0 28 28" fill="none">
+        {/* Sphere */}
+        <circle cx="14" cy="14" r="12" fill={c} />
+        {/* Shine */}
+        <ellipse cx="10" cy="9" rx="4" ry="2.5" fill="white" opacity="0.18" />
+        {/* Equator curve */}
+        <path d="M2.5,14 Q14,19 25.5,14" stroke="rgba(0,0,0,0.15)" strokeWidth="1" fill="none" />
+        {/* Centre star (5-pointed) */}
+        <polygon points="14,8 15,10.8 18,10.8 15.8,12.6 16.6,15.5 14,13.8 11.4,15.5 12.2,12.6 10,10.8 13,10.8" fill={star} />
+        {/* Top-left small star */}
+        <polygon points="7,5 7.5,6.4 9,6.4 7.9,7.3 8.3,8.7 7,7.9 5.7,8.7 6.1,7.3 5,6.4 6.5,6.4" fill={star} />
+        {/* Top-right small star */}
+        <polygon points="21,5 21.5,6.4 23,6.4 21.9,7.3 22.3,8.7 21,7.9 19.7,8.7 20.1,7.3 19,6.4 20.5,6.4" fill={star} />
+        {/* Bottom-left small star */}
+        <polygon points="7,19 7.5,20.4 9,20.4 7.9,21.3 8.3,22.7 7,21.9 5.7,22.7 6.1,21.3 5,20.4 6.5,20.4" fill={star} />
+        {/* Bottom-right small star */}
+        <polygon points="21,19 21.5,20.4 23,20.4 21.9,21.3 22.3,22.7 21,21.9 19.7,22.7 20.1,21.3 19,20.4 20.5,20.4" fill={star} />
+      </svg>
+    );
+  }
+
   if (category === "Sports") {
     const c = color ?? "#3b82f6";
     return (
