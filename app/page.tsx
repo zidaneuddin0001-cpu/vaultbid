@@ -57,30 +57,33 @@ export default function Home() {
 
         {/* Floating decorative cards */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {/* Left card */}
-          <div className="vb-float-1 absolute left-[5%] top-[10%] w-32 h-44 rounded-xl border opacity-20"
-            style={{ background: "linear-gradient(135deg, #1a0030, #0d1a40)", borderColor: "#a855f7", boxShadow: "0 0 20px #a855f720" }}>
-            <div className="h-full flex flex-col p-2 gap-1">
-              <div className="h-24 rounded-lg bg-purple-900/40" />
-              <div className="h-2 w-3/4 rounded bg-purple-700/40" />
-              <div className="h-1.5 w-1/2 rounded bg-purple-700/30" />
+          {/* Left — purple Magic card */}
+          <div className="vb-float-1 absolute left-[4%] top-[8%] w-36 h-48 rounded-2xl"
+            style={{ background: "linear-gradient(135deg, #2d0060, #0d1a40)", border: "1px solid #a855f7", boxShadow: "0 0 30px #a855f740, inset 0 0 20px #a855f710" }}>
+            <div className="h-full flex flex-col p-3 gap-2">
+              <div className="text-xs font-bold" style={{ color: "#a855f7" }}>✦ Magic</div>
+              <div className="flex-1 rounded-lg" style={{ background: "linear-gradient(135deg, #3b0080, #1a1a60)" }} />
+              <div className="h-2 w-3/4 rounded-full" style={{ background: "#a855f750" }} />
+              <div className="h-1.5 w-1/2 rounded-full" style={{ background: "#a855f730" }} />
             </div>
           </div>
-          {/* Right card */}
-          <div className="vb-float-2 absolute right-[5%] top-[5%] w-28 h-40 rounded-xl border opacity-20"
-            style={{ background: "linear-gradient(135deg, #1a1000, #0a1a10)", borderColor: "#facc15", boxShadow: "0 0 20px #facc1520" }}>
-            <div className="h-full flex flex-col p-2 gap-1">
-              <div className="h-20 rounded-lg bg-yellow-900/40" />
-              <div className="h-2 w-3/4 rounded bg-yellow-700/40" />
-              <div className="h-1.5 w-1/2 rounded bg-yellow-700/30" />
+          {/* Right — gold Pokémon card */}
+          <div className="vb-float-2 absolute right-[4%] top-[5%] w-32 h-44 rounded-2xl"
+            style={{ background: "linear-gradient(135deg, #3a2000, #1a1000)", border: "1px solid #facc15", boxShadow: "0 0 30px #facc1540, inset 0 0 20px #facc1510" }}>
+            <div className="h-full flex flex-col p-3 gap-2">
+              <div className="text-xs font-bold" style={{ color: "#facc15" }}>⚡ Pokémon</div>
+              <div className="flex-1 rounded-lg" style={{ background: "linear-gradient(135deg, #6a3800, #2a1800)" }} />
+              <div className="h-2 w-3/4 rounded-full" style={{ background: "#facc1550" }} />
+              <div className="h-1.5 w-1/2 rounded-full" style={{ background: "#facc1530" }} />
             </div>
           </div>
-          {/* Far left card */}
-          <div className="vb-float-3 absolute left-[15%] bottom-[10%] w-24 h-36 rounded-xl border opacity-10"
-            style={{ background: "linear-gradient(135deg, #0a0020, #001a0a)", borderColor: "#ef4444", boxShadow: "0 0 20px #ef444420" }}>
-            <div className="h-full flex flex-col p-2 gap-1">
-              <div className="h-16 rounded-lg bg-red-900/40" />
-              <div className="h-2 w-3/4 rounded bg-red-700/40" />
+          {/* Bottom left — red One Piece card */}
+          <div className="vb-float-3 absolute left-[14%] bottom-[5%] w-28 h-40 rounded-2xl"
+            style={{ background: "linear-gradient(135deg, #3a0000, #1a0010)", border: "1px solid #ef4444", boxShadow: "0 0 30px #ef444440, inset 0 0 20px #ef444410" }}>
+            <div className="h-full flex flex-col p-3 gap-2">
+              <div className="text-xs font-bold" style={{ color: "#ef4444" }}>☠ One Piece</div>
+              <div className="flex-1 rounded-lg" style={{ background: "linear-gradient(135deg, #5a0000, #2a0010)" }} />
+              <div className="h-2 w-3/4 rounded-full" style={{ background: "#ef444450" }} />
             </div>
           </div>
         </div>
